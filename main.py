@@ -34,7 +34,7 @@ if mode == 'image':
     img = cv.imread(path)
 
     if img is None:
-        print("الصورة مش موجودة ❌")
+        print("الصورة مش موجودة ")
     else:
         output = process_img(img)
 
@@ -43,7 +43,7 @@ if mode == 'image':
 
         cv.waitKey(0)
         cv.destroyAllWindows()
-        print("Image saved ✅")
+        print("Image saved ")
 
 
 # ================= VIDEO =================
@@ -74,7 +74,7 @@ elif mode == 'video':
     cap.release()
     out.release()
     cv.destroyAllWindows()
-    print("Video saved ✅")
+    print("Video saved ")
 
 
 # ================= WEBCAM =================
@@ -96,7 +96,7 @@ elif mode == 'webcam':
         if not ret:
             break
 
-        # 🔥 هنا الحل: إلغاء المراية
+        #  هنا الحل: إلغاء المراية
         frame = cv.flip(frame, 1)
 
         output = process_img(frame)
@@ -109,17 +109,17 @@ elif mode == 'webcam':
 
         key = cv.waitKey(1) & 0xFF
 
-        # 📸 حفظ صورة
+        # حفظ صورة
         if key == ord('s'):
             cv.imwrite(os.path.join(out_dir, 'snapshot.jpg'), output)
             print("Snapshot saved 📸")
 
-        # 🎥 تشغيل/إيقاف تسجيل
+        #  تشغيل/إيقاف تسجيل
         elif key == ord('r'):
             recording = not recording
             print("Recording..." if recording else "Stopped recording")
 
-        # ❌ خروج
+        # خروج
         elif key == ord('q'):
             break
 
